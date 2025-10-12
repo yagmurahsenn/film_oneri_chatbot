@@ -2,8 +2,16 @@ import streamlit as st
 import os
 from rag_pipeline import get_qa_chain
 
+# --- 🚨 KRİTİK DÜZELTME: API Anahtarını Secrets'ten Ortam Değişkenine Aktarma ---
+# Bu, get_qa_chain() fonksiyonunun API anahtarını bulmasını sağlar.
+# GOOGLE_API_KEY'i de ekliyoruz çünkü LangChain Embedding modeli bunu arıyor.
+if 'GEMINI_API_KEY' in st.secrets:
+    os.environ['GEMINI_API_KEY'] = st.secrets['GEMINI_API_KEY']
+    os.environ['GOOGLE_API_KEY'] = st.secrets['GEMINI_API_KEY'] 
+# ----------------------------------------------------------------------------
+
+
 # --- RAG ZİNCİRİNİ YÜKLEME ---
-# @st.cache_resource, RAG kurulumunu (Embedding ve Vektörleme) sadece bir kez yapar.
 @st.cache_resource
 def load_rag_chain():
     return get_qa_chain()
@@ -11,8 +19,12 @@ def load_rag_chain():
 try:
     qa_chain = load_rag_chain()
 except ValueError as e:
-    # API Anahtarı eksikse uyarı verir.
-    st.error(f"Kurulum hatası: {e}. Lütfen Streamlit Secrets bölümünde GEMINI_API_KEY'i ayarlayın.")
+    # Bu hata, rag_pipeline.py dosyasındaki API kontrolünden gelir.
+    st.error(f"Kurulum hatası: {e}. Lütfen Streamlit Secrets bölümünde GEMINI_API_KEY'i doğru ayarladığınızdan emin olun.")
+    st.stop()
+except Exception as e:
+    # Diğer beklenmedik hatalar
+    st.error(f"Beklenmedik RAG kurulum hatası: {e}")
     st.stop()
 
 
@@ -38,4 +50,5 @@ if prompt := st.chat_input("Film önerisi isteyin..."):
             response = qa_chain.invoke({"query": prompt})
             
             st.session_state.messages.append({"role": "assistant", "content": response["result"]})
+            st.write(response["result"])
             st.write(response["result"])
