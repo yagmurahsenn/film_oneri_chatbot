@@ -1,0 +1,7 @@
+# RAG Film Chatbot Gerekli Kütüphaneler
+pydantic==2.5.3
+langchain-google-genai
+langchain-community
+chromadb
+pandas
+streamlit
