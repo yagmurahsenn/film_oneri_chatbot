@@ -9,7 +9,7 @@ from langchain.prompts import PromptTemplate
 
 # --- A. GENEL AYARLAR ---
 MODEL_NAME = "gemini-2.5-flash"
-EMBEDDING_MODEL_NAME = "text-embedding-004" 
+EMBEDDING_MODEL_NAME = "models/text-embedding-004" 
 FILE_NAME = "movies_100.csv"
 PERSIST_DIRECTORY = "./chroma_db"
 COLLECTION_NAME = "movie_recommendations"
