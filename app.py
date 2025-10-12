@@ -26,7 +26,17 @@ except Exception as e:
     # Diğer beklenmedik hatalar
     st.error(f"Beklenmedik RAG kurulum hatası: {e}")
     st.stop()
+try:
+    qa_chain = load_rag_chain()
+except ValueError as e:
+    # ... (Hata kodu aynı kalır)
 
+st.success("✅ Film Veri Tabanı Yüklendi! Chatbot hazır.") 
+# --------------------------------
+
+# --- STREAMLIT ARAYÜZÜ ---
+st.title("🎬 RAG Tabanlı Film Öneri Asistanı")
+# ... (Geri kalan kod aynı)
 
 # --- STREAMLIT ARAYÜZÜ ---
 st.title("🎬 RAG Tabanlı Film Öneri Asistanı")
