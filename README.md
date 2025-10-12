@@ -1,6 +1,6 @@
 # 🎬 RAG Tabanlı Film Öneri Asistanı (Retrieval Augmented Generation)
 
-## Projenin Amacı 
+## 1 - Projenin Amacı 
 
 Bu projenin temel amacı, **RAG (Retrieval Augmented Generation)** mimarisini kullanarak geleneksel Büyük Dil Modeli (LLM) kısıtlamalarını aşan, **doğrulanabilir** ve **bağlama dayalı** film önerileri sunan bir chatbot geliştirmektir. Chatbot, kullanıcının sorgularına sadece bizim oluşturduğumuz **özel veri tabanında (100 film)** bulunan bilgilere dayanarak cevap verir. Bu yaklaşım, modelin "uydurma" (halüsinasyon) yapma riskini ortadan kaldırır.
 
@@ -22,7 +22,7 @@ Veri seti, projenin kapsamına uygun olarak 100 filmle sınırlandırılmış ve
 
 ---
 
-## 3 - Çözüm Mimariniz ve Kullanılan Yöntemler 
+## 3 - Çözüm Mimarisi ve Kullanılan Yöntemler 
 
 Proje, **LangChain** çatısı altında RAG mimarisi üzerine kurulmuştur.
 
@@ -79,7 +79,7 @@ Elde Edilen Sonuçlar Özeti
 Geliştirilen RAG sistemi, 100 filmlik veri setine bağlı kalarak yüksek oranda isabetli ve gerekçeli film önerileri sunabilmektedir. Chatbot, sadece film adına değil, aynı zamanda film özetinin (plot) anlamsal içeriğine göre de başarılı eşleşmeler yapabilmektedir.
 
 Web Linki (Deployment)
-Projenin canlı web adresi aşağıdadır. (Bu link, projenizin teslim adresi olacaktır.)
+Projenin canlı web adresi aşağıdadır. 
 
 Canlı Uygulama: https://filmonerichatbot-mm26glrrxyv4dhre3hvzjb.streamlit.app/
 
