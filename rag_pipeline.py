@@ -16,27 +16,21 @@ COLLECTION_NAME = "movie_recommendations"
 
 
 # --- B. VERİ SETİ OLUŞTURMA (JSON'dan okuma) ---
-# Bu fonksiyon, Streamlit Cloud'da JSON dosyanızdaki 100 filmi okuyup CSV'ye çevirir.
 def create_and_save_data(filename):
-    # movie_data.json dosyasını okur
     try:
         with open("movie_data.json", "r", encoding="utf-8") as f:
             movie_data_list = json.load(f)
     except FileNotFoundError:
-        # Eğer JSON dosyası bulunamazsa, uygulama burada durur.
         raise FileNotFoundError("movie_data.json dosyası bulunamadı. Lütfen GitHub'a yüklediğinizden emin olun.")
         
-    # CSV'ye kaydeder
     df_movie = pd.DataFrame(movie_data_list)
     df_movie.to_csv(filename, index=False, encoding='utf-8')
 
-    # Veri setini kontrol etme
     if 'title' not in df_movie.columns:
         raise ValueError("Veri setinde 'title' sütunu bulunamadı. JSON dosyanızın formatı hatalı.")
 
 
 # --- C. RAG PIPELINE KURULUMU ---
-# Bu fonksiyon, Streamlit'in @st.cache_resource ile bir kez çağıracağı fonksiyondur.
 def get_qa_chain():
     # API Anahtarı kontrolü
     if "GEMINI_API_KEY" not in os.environ or not os.environ["GEMINI_API_KEY"]:
@@ -75,7 +69,6 @@ Cevabın:"""
     return qa_chain
 
 if __name__ == "__main__":
-    # Konsolda RAG zincirini hızlıca test etmek için
     qa_chain = get_qa_chain()
     test_query = "İnsan psikolojisi temalı, dramatik ve derin bir film önerisi yap."
     print(f"TEST EDİLİYOR: {test_query}")
