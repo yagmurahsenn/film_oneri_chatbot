@@ -83,6 +83,12 @@ Projenin canlı web adresi aşağıdadır. (Bu link, projenizin teslim adresi ol
 
 Canlı Uygulama: https://filmonerichatbot-mm26glrrxyv4dhre3hvzjb.streamlit.app/
 
+**Projenin Çalışma Demosu:**
+Canlı chatbot'un soru-cevap yeteneklerini gösteren kısa video aşağıdadır.
+
+[Proje Demo Videosu](https://youtube.com/shorts/OMypliw_saA?si=Jala-01ncC1pFwlR)
+
+
 Test Senaryoları (Arayüz Kabiliyetleri)
 Canlı arayüze giderek aşağıdaki örnek sorgularla chatbot'un doğru çalışıp çalışmadığını test edebilirsiniz:
 
