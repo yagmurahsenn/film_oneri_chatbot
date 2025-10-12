@@ -2,19 +2,13 @@ import streamlit as st
 import os
 from rag_pipeline import get_qa_chain
 
-# --- 🚨 KRİTİK DÜZELTME: API Anahtarını Streamlit Secrets'ten Basitçe Okuma ---
-# API anahtarını standart bir ortam değişkeni olarak değil, st.secrets'tan doğrudan okuyoruz.
-# Bu değişkenler, rag_pipeline.py dosyasındaki fonksiyonun API anahtarını bulmasını sağlayacaktır.
 try:
-    # 1. St.secrets'tan GEMINI_API_KEY'i alıyoruz.
     api_key = st.secrets["GEMINI_API_KEY"]
     
-    # 2. Aldığımız anahtarı LangChain'in aradığı her iki isme de atıyoruz.
     os.environ['GEMINI_API_KEY'] = api_key
     os.environ['GOOGLE_API_KEY'] = api_key 
     
 except KeyError:
-    # Anahtar bulunamazsa, kullanıcıya açık bir hata mesajı gösterilir.
     st.error("Kurulum hatası: Lütfen Streamlit Secrets bölümünde GEMINI_API_KEY'i ayarlayın.")
     st.stop()
 except Exception as e:
@@ -29,7 +23,6 @@ def load_rag_chain():
 
 try:
     qa_chain = load_rag_chain()
-    # RAG zinciri başarıyla kurulduktan sonra başarılı mesajı gösterilir.
     st.success("✅ Film Veri Tabanı Yüklendi! Chatbot hazır.") 
 except Exception as e:
     st.error(f"RAG zinciri kurulumunda beklenmeyen bir hata oluştu: {e}")
