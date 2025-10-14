@@ -70,10 +70,15 @@ streamlit run app.py
 ### 5 - Requirements.txt
 
 pydantic==2.5.3
+
 langchain-google-genai
+
 langchain-community
+
 chromadb
+
 pandas
+
 streamlit
 
 Elde Edilen Sonuçlar Özeti 
